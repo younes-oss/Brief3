@@ -9,7 +9,7 @@ public class Main {
         // to see how IntelliJ IDEA suggests fixing it.
          int choix = 0;
         System.out.println("-------------Hello and welcome---------------");
-        while (choix!=4){
+        while (choix!=5){
             System.out.print("           1 .créer un client\n"+
                     "           2 .créer un compte \n"+
                     "           3 . gérer les opérations\n"+
@@ -19,11 +19,11 @@ public class Main {
             choix = scanner.nextInt();
             switch (choix){
 
-                case 1: System.out.print("la création de client avec succées");
+                case 1: System.out.print("la création de client avec succées\n");
                     break;
-                case 2 : System.out.print("la création du compte avec succées");
+                case 2 : System.out.print("la création du compte avec succées\n");
                     break;
-                case 3 : System.out.print("voici les opérations ");
+                case 3 : System.out.print("voici les opérations \n");
                     break;
                 case 4 : System.out.print("voici le filtrage\n");
                     break;
