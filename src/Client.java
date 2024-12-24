@@ -1,7 +1,11 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
 public class Client {
     private static int compteur;
     private int id;
     private String nom,prenom,email,adress,telephone;
+    private ArrayList<Client> clients = new ArrayList<>();
 
 
     public Client(String nom , String prenom , String email , String adress,String telephone){
@@ -23,7 +27,7 @@ public class Client {
     }
 
     public int getId() {
-        return id;
+        return this.id;
     }
 
     public void setId(int id) {
@@ -68,5 +72,21 @@ public class Client {
 
     public void setTelephone(String telephone) {
         this.telephone = telephone;
+    }
+    public void ajouterClient(){
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("votre nom : ");
+        String firstName = scanner.next();
+        System.out.print("\n votre prenom : ");
+        String lastName = scanner.next();
+        System.out.print("\n votre email : ");
+        String email = scanner.next();
+        System.out.print("\n votre adress : ");
+        String adress = scanner.nextLine();
+        scanner.nextLine();
+        System.out.print("\n votre telephone : ");
+        String telephone = scanner.next();
+
+        clients.add(new Client(firstName,lastName,email,adress,telephone));
     }
 }
