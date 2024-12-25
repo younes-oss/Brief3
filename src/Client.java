@@ -4,7 +4,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Client {
-    private static int compteur;
+    private static int compteur =1;
     private int id;
     private String nom,prenom,email,adress,telephone;
     private ArrayList<Client> clients = new ArrayList<>();
@@ -86,30 +86,38 @@ public class Client {
         String email  = scanner.next();
         while (!RegexGmail(email)){
             System.out.println(" \"veillez ressayer de saisir l'email d'une maniére correcte\" ");
-            System.out.print("\n votre email : ");
+            System.out.print(" votre email : ");
             email = scanner.next();
 
         }
+        scanner.nextLine();
         System.out.print("\n votre adress : ");
         String adress = scanner.nextLine();
-        scanner.nextLine();
+
         System.out.print("\n votre telephone : ");
         String telephone = scanner.next();
+        while (!regexNumero(telephone)){
+            System.out.print("\"veuillez saisir le uméro du telephone d'une maniére correcte\"");
+            telephone = scanner.next();
+        }
 
         clients.add(new Client(firstName,lastName,email,adress,telephone));
     }
 
     public void afficherClient(){
         for(int i=0; i<clients.size();i++){
+            int compteur = 1;
+            compteur+=i;
+            System.out.print("\n---------------client"+compteur+"---------------\n");
             if(!clients.isEmpty()){
                 System.out.print("id : "+clients.get(i).getId()+
                         "\nfull name : "+clients.get(i).nom+" "+clients.get(i).getPrenom()+
                         "\nemail : "+clients.get(i).getEmail()+"\nadress : "+clients.get(i).getAdress()+
                         "\ntelephone : "+clients.get(i).getTelephone());
+                System.out.print("\n----------------------------------------");
             }
         }
     }
-
 
     public static boolean RegexGmail(String input){
 
@@ -118,6 +126,18 @@ public class Client {
         Pattern pattern = Pattern.compile(regex);
 
         Matcher matcher = pattern.matcher(input);
+
+        return matcher.matches();
+    }
+
+    public static boolean regexNumero(String input){
+
+        String regex = "^((06)|(05)|(07))([0-9]{8})$";
+
+        Pattern pattern = Pattern.compile(regex);
+
+        Matcher matcher = pattern.matcher(input);
+
         return matcher.matches();
     }
 }
