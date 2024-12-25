@@ -1,5 +1,7 @@
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Client {
     private static int compteur;
@@ -81,7 +83,13 @@ public class Client {
         System.out.print("\n votre prenom : ");
         String lastName = scanner.next();
         System.out.print("\n votre email : ");
-        String email = scanner.next();
+        String email  = scanner.next();
+        while (!RegexGmail(email)){
+            System.out.println(" \"veillez ressayer de saisir l'email d'une maniére correcte\" ");
+            System.out.print("\n votre email : ");
+            email = scanner.next();
+
+        }
         System.out.print("\n votre adress : ");
         String adress = scanner.nextLine();
         scanner.nextLine();
@@ -103,5 +111,13 @@ public class Client {
     }
 
 
+    public static boolean RegexGmail(String input){
 
+        String regex = "^([a-zA-Z0-9_.-]+)@([a-z]+).([a-z]+)$";
+
+        Pattern pattern = Pattern.compile(regex);
+
+        Matcher matcher = pattern.matcher(input);
+        return matcher.matches();
+    }
 }
