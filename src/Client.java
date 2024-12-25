@@ -17,6 +17,7 @@ public class Client {
         this.telephone=telephone;
         compteur++;
     }
+    public Client(){}
 
     public static int getCompteur() {
         return compteur;
@@ -89,4 +90,18 @@ public class Client {
 
         clients.add(new Client(firstName,lastName,email,adress,telephone));
     }
+
+    public void afficherClient(){
+        for(int i=0; i<clients.size();i++){
+            if(!clients.isEmpty()){
+                System.out.print("id : "+clients.get(i).getId()+
+                        "\nfull name : "+clients.get(i).nom+" "+clients.get(i).getPrenom()+
+                        "\nemail : "+clients.get(i).getEmail()+"\nadress : "+clients.get(i).getAdress()+
+                        "\ntelephone : "+clients.get(i).getTelephone());
+            }
+        }
+    }
+
+
+
 }
