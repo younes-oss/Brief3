@@ -7,7 +7,8 @@ public class Client {
     private static int compteur =1;
     private int id;
     private String nom,prenom,email,adress,telephone;
-    private ArrayList<Client> clients = new ArrayList<>();
+    private ArrayList<Compte> comptes = new ArrayList<Compte>();
+    //pivate ArrayList<Client> clients = new ArrayList<>();
 
 
     public Client(String nom , String prenom , String email , String adress,String telephone){
@@ -17,6 +18,7 @@ public class Client {
         this.email= email;
         this.adress= adress;
         this.telephone=telephone;
+        Main.clients.add(this);
         compteur++;
     }
     public Client(){}
@@ -76,6 +78,14 @@ public class Client {
     public void setTelephone(String telephone) {
         this.telephone = telephone;
     }
+    public ArrayList<Compte> getComptes() {
+        return comptes;
+    }
+    public void setComptes ( Compte compte ) {
+        this.comptes.add( compte );
+    }
+
+
     public void ajouterClient(){
         Scanner scanner = new Scanner(System.in);
         System.out.print("votre nom : ");
@@ -101,21 +111,25 @@ public class Client {
             telephone = scanner.next();
         }
 
-        clients.add(new Client(firstName,lastName,email,adress,telephone));
+        Main.clients.add(new Client(firstName,lastName,email,adress,telephone));
     }
 
     public void afficherClient(){
-        for(int i=0; i<clients.size();i++){
-            int compteur = 1;
-            compteur+=i;
-            System.out.print("\n---------------client"+compteur+"---------------\n");
-            if(!clients.isEmpty()){
-                System.out.print("id : "+clients.get(i).getId()+
-                        "\nfull name : "+clients.get(i).nom+" "+clients.get(i).getPrenom()+
-                        "\nemail : "+clients.get(i).getEmail()+"\nadress : "+clients.get(i).getAdress()+
-                        "\ntelephone : "+clients.get(i).getTelephone());
-                System.out.print("\n----------------------------------------");
-            }
+        if(!Main.clients.isEmpty()){
+        for(int i=0; i<Main.clients.size();i++) {
+            int compteur = 0;
+            compteur += i;
+            System.out.print("\n---------------client" + compteur + "---------------\n");
+
+            System.out.print("id : " + Main.clients.get(i).getId() +
+                    "\nfull name : " + Main.clients.get(i).nom + " " + Main.clients.get(i).getPrenom() +
+                    "\nemail : " + Main.clients.get(i).getEmail() + "\nadress : " + Main.clients.get(i).getAdress() +
+                    "\ntelephone : " + Main.clients.get(i).getTelephone());
+            System.out.print("\n----------------------------------------\n");
+        }
+        }
+        else {
+            System.out.print(" la liste est vide \n");
         }
     }
 
