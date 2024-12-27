@@ -1,3 +1,5 @@
+import java.util.Random;
+
 public class CompteEpargne extends Compte {
 
     private double tauxInteret;
@@ -17,5 +19,21 @@ public class CompteEpargne extends Compte {
 
     public void setTauxInteret(double tauxInteret) {
         this.tauxInteret = tauxInteret;
+    }
+
+    public static void creerCompteEpargne(){
+        System.out.println("Bienvenue dans notre agence !");
+        System.out.print("Donnez-moi l'ID de la personne pour laquelle vous souhaitez créer un compte : ");
+        int id = Main.scanner.nextInt();
+
+        Random random = new Random();
+        int randomNumber = random.nextInt(900000);
+
+        System.out.print("saisir votre solde");
+        double solde = Main.scanner.nextDouble();
+
+        System.out.print("saisir la valeur de tauxInteret : ");
+        int frais = Main.scanner.nextInt();
+
     }
 }
