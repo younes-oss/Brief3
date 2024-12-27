@@ -8,7 +8,7 @@ public class Client {
     private int id;
     private String nom,prenom,email,adress,telephone;
     private ArrayList<Compte> comptes = new ArrayList<Compte>();
-    //pivate ArrayList<Client> clients = new ArrayList<>();
+
 
 
     public Client(String nom , String prenom , String email , String adress,String telephone){
@@ -18,7 +18,6 @@ public class Client {
         this.email= email;
         this.adress= adress;
         this.telephone=telephone;
-        Main.clients.add(this);
         compteur++;
     }
     public Client(){}
@@ -81,10 +80,11 @@ public class Client {
     public ArrayList<Compte> getComptes() {
         return comptes;
     }
-    public void setComptes ( Compte compte ) {
-        this.comptes.add( compte );
+    public void setComptes(Compte compte) {
+        if (!this.comptes.contains(compte)) { // Évite les doublons
+            this.comptes.add(compte);
+        }
     }
-
 
     public void ajouterClient(){
         Scanner scanner = new Scanner(System.in);
@@ -117,7 +117,7 @@ public class Client {
     public void afficherClient(){
         if(!Main.clients.isEmpty()){
         for(int i=0; i<Main.clients.size();i++) {
-            int compteur = 0;
+            int compteur = 1;
             compteur += i;
             System.out.print("\n---------------client" + compteur + "---------------\n");
 

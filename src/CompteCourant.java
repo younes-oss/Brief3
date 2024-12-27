@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Random;
 
 public class CompteCourant extends Compte {
@@ -18,12 +19,10 @@ public class CompteCourant extends Compte {
     public void setFraisBancaire(double fraisBancaire) {
         this.fraisBancaire = fraisBancaire;
     }
-    public void créerCompte() {
+    public static void créerCompteCourant() {
         System.out.println("Bienvenue dans notre agence !");
         System.out.print("Donnez-moi l'ID de la personne pour laquelle vous souhaitez créer un compte : ");
         int id = Main.scanner.nextInt();
-
-        String choice = Main.scanner.next().toUpperCase();
 
         boolean clientTrouve = false;
         Random random = new Random();
@@ -43,7 +42,7 @@ public class CompteCourant extends Compte {
                 Compte compte;
 
                     compte = new CompteCourant(nombreAleatoire,solde,frais);
-                    System.out.println("Compte Épargne créé avec succès !");
+                    System.out.println("Compte Courant créé avec succès !");
 
                 // Liaison du compte au client
                 compte.setProprietaire(Main.clients.get(i)); // Si `proprietaire` existe dans `Compte`
@@ -55,5 +54,39 @@ public class CompteCourant extends Compte {
         if (!clientTrouve) {
             System.out.println("Aucun client trouvé avec l'ID " + id + ". Veuillez réessayer.");
         }
+    }
+
+    @Override
+    public String toString() {
+        return String.format("Compte Courant [Numéro=%d, Solde=%.2f, Frais Bancaires=%.2f]",
+                getNumero(), getSolde(), fraisBancaire);
+    }
+
+    // Méthode pour afficher les comptes associés aux clients
+    public static void afficherComptesClients() {
+        if (Main.clients.isEmpty()) {
+            System.out.println("Aucun client enregistré.");
+            return;
+        }
+
+        for (Client client : Main.clients) {
+            System.out.println("========================================");
+            System.out.println("Client ID: " + client.getId());
+            System.out.println("Nom: " + client.getNom() + " " + client.getPrenom());
+            System.out.println("Email: " + client.getEmail());
+            System.out.println("Adresse: " + client.getAdress());
+            System.out.println("Téléphone: " + client.getTelephone());
+
+            ArrayList<Compte> comptes = client.getComptes();
+            if (comptes.isEmpty()) {
+                System.out.println("Aucun compte associé.");
+            }else{
+                System.out.println("Comptes associés:");
+                for (Compte compte : comptes) {
+                    System.out.println("\t" + compte.toString());
+                }
+            }
+        }
+        System.out.println("========================================");
     }
 }

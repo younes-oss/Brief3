@@ -26,7 +26,7 @@ public class Main {
 
                 case 1: menuClient();
                     break;
-                case 2 : System.out.print("la création du compte avec succées\n");
+                case 2 : menuCompte();
                     break;
                 case 3 : System.out.print("voici les opérations \n");
                     break;
@@ -51,6 +51,25 @@ public class Main {
                 break;
                 case 2 :client.afficherClient();
                 break;
+                case 3 :
+                    break;
+            }
+        }
+    }
+    public static void menuCompte(){
+        CompteCourant compte = new CompteCourant();
+        System.out.print("----------First choice-----------\n");
+        int choix=0;
+        while (choix!=3){
+            System.out.print("1 .créer un compte courant  \n"+
+                    "2 . afficher les comptes associées \n");
+            choix = scanner.nextInt();
+
+            switch (choix){
+                case 1 : compte.créerCompteCourant();
+                    break;
+                case 2 :compte.afficherComptesClients();
+                    break;
                 case 3 :
                     break;
             }
