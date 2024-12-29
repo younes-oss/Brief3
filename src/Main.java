@@ -28,7 +28,7 @@ public class Main {
                     break;
                 case 2 : menuCompte();
                     break;
-                case 3 : System.out.print("voici les opérations \n");
+                case 3 : Operation.gererOperations();
                     break;
                 case 4 : System.out.print("voici le filtrage\n");
                     break;
