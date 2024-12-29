@@ -90,9 +90,9 @@ public class Client {
         Scanner scanner = new Scanner(System.in);
         System.out.print("votre nom : ");
         String firstName = scanner.next();
-        System.out.print("\n votre prenom : ");
+        System.out.print("votre prenom : ");
         String lastName = scanner.next();
-        System.out.print("\n votre email : ");
+        System.out.print("votre email : ");
         String email  = scanner.next();
         while (!RegexGmail(email)){
             System.out.println(" \"veillez ressayer de saisir l'email d'une maniére correcte\" ");

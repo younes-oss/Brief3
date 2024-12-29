@@ -28,7 +28,7 @@ public class CompteCourant extends Compte {
         Random random = new Random();
         int nombreAleatoire = random.nextInt(900000);
 
-        System.out.print("saisir votre solde");
+        System.out.print("saisir votre solde : ");
         double solde = Main.scanner.nextDouble();
 
         System.out.print("saisir la valeur de fraisBancaires : ");
@@ -55,13 +55,15 @@ public class CompteCourant extends Compte {
             System.out.println("Aucun client trouvé avec l'ID " + id + ". Veuillez réessayer.");
         }
     }
-
     @Override
     public String toString() {
         return String.format("Compte Courant [Numéro=%d, Solde=%.2f, Frais Bancaires=%.2f]",
                 getNumero(), getSolde(), fraisBancaire);
     }
 
+
+
+    // Méthode pour afficher les comptes associés aux clients
     // Méthode pour afficher les comptes associés aux clients
     public static void afficherComptesClients() {
         if (Main.clients.isEmpty()) {
@@ -80,13 +82,20 @@ public class CompteCourant extends Compte {
             ArrayList<Compte> comptes = client.getComptes();
             if (comptes.isEmpty()) {
                 System.out.println("Aucun compte associé.");
-            }else{
+            } else {
                 System.out.println("Comptes associés:");
                 for (Compte compte : comptes) {
-                    System.out.println("\t" + compte.toString());
+                    if (compte instanceof CompteCourant) {
+                        System.out.println("\t" + compte.toString());
+                    } else if (compte instanceof CompteEpargne) {
+                        System.out.println("\t" + compte.toString());
+                    } else {
+                        System.out.println("\tType de compte inconnu: " + compte.toString());
+                    }
                 }
             }
         }
         System.out.println("========================================");
     }
+
 }

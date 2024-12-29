@@ -43,7 +43,8 @@ public class Main {
         int choix=0;
         while (choix!=3){
             System.out.print("1 .ajouter un client \n"+
-                    "2 . afficher les clients \n");
+                    "2 . afficher les clients \n" +
+                    "3 . retour a la liste principale \n");
             choix = scanner.nextInt();
 
             switch (choix){
@@ -57,21 +58,23 @@ public class Main {
         }
     }
     public static void menuCompte(){
-        CompteCourant compte = new CompteCourant();
+        CompteCourant compteCourant = new CompteCourant();
+        CompteEpargne compteEpargne = new CompteEpargne();
         System.out.print("----------First choice-----------\n");
         int choix=0;
-        while (choix!=3){
+        while (choix!=4){
             System.out.print("1 .créer un compte courant  \n"+
-                    "2 . afficher les comptes associées \n");
+                    "2 .créer un compte Epargne \n"+
+                    "3 . afficher les comptes associées \n");
             choix = scanner.nextInt();
-
             switch (choix){
-                case 1 : compte.créerCompteCourant();
+                case 1 : compteCourant.créerCompteCourant();
                     break;
-                case 2 :compte.afficherComptesClients();
+                case 3 : compteEpargne.creerCompteEpargne();
                     break;
-                case 3 :
+                case 2 :compteCourant.afficherComptesClients();
                     break;
+                case 4 :System.out.print("retourne a la liste principale");
             }
         }
     }
